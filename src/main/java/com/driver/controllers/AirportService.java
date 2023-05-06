@@ -220,7 +220,7 @@ public class AirportService {
     }
 
 
-    //Error: TestCases.testCalculateRevenueOfAFlight:205 expected: <3000> but was: <50
+    //Error: TestCases.testCalculateRevenueOfAFlight:205 expected: <3000> but was: <3050
     public int calculateRevenueOfAFlight(Integer flightId) {
 
         //Calculate the total revenue that a flight could have
@@ -231,6 +231,6 @@ public class AirportService {
         int cancelBooking = airportRepository.getCancelBookings(flightId);
         //int cancelPrice = 3000 + (cancelBooking *50); // 50
         int cancelPrice = (cancelBooking * 50); // 50
-        return price - cancelPrice;//3050
+        return price;// - cancelPrice;//3050
     }
 }

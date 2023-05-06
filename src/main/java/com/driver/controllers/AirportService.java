@@ -165,6 +165,9 @@ public class AirportService {
     /*
     Error: TestCases.testCalculateRevenueOfAFlight:205 expected: <3000> but was: <50>
     Error:    TestCases.testGetNumberOfPeopleOn:79 expected: <2> but was: <0>
+
+
+    TestCases.testGetNumberOfPeopleOnWithNoFlight:88 » NullPointer
      */
 
     public int getNumberOfPeopleOn(Date date, String airportName) {
@@ -172,6 +175,7 @@ public class AirportService {
         //Calculate the total number of people who have flights on that day on a particular airport
         //This includes both the people who have come for a flight and who have landed on an airport after their flight
         Airport airport = airportRepository.getAirportByName(airportName);
+        if(airport == null) return 0;
         City city = airport.getCity();
 
         String givenDateString = new SimpleDateFormat("yyyy-MM-dd").format(date);

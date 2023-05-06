@@ -44,6 +44,7 @@ public class AirportRepository {
     }
 
     public List<Flight> getAllFlight() {
+        if(flightMap.isEmpty()) return new ArrayList<>();
         return new ArrayList<>(flightMap.values());
     }
 
@@ -111,7 +112,10 @@ public class AirportRepository {
     }
 
     public Airport getAirportByName(String airportName) {
-        return airportMap.get(airportName);
+        if(airportMap.containsKey(airportName)){
+            return airportMap.get(airportName);
+        }
+        else return null;
     }
 
     public List<Integer> getAllBookingsByFlightId() {

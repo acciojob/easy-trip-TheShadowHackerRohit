@@ -18,9 +18,9 @@ public class AirportRepository {
     Map<Integer,Flight> flightMap = new HashMap<>();
     Map<Integer,Passenger> passengerMap = new HashMap<>();
     Map<Integer,List<Integer>> flightPassengerMap = new HashMap<>();//flightId, passengerIds
+
     Map<Integer,Integer> flightCancelMap = new HashMap<>();// flight ids , number of passenger cancel the flight
 
-    List<Integer> flightCancelList = new ArrayList<>();
 
     public void saveAirport(Airport airport) {
         airportMap.put(airport.getAirportName(),airport);
@@ -145,22 +145,17 @@ public class AirportRepository {
             pIds.remove(idx);
 
         }
-        flightCancelList.add((flightId));
-       // flightCancelMap.put(flightId,1);
+
+        flightCancelMap.put(flightId,flightCancelMap.getOrDefault(0,1)+1);
         return "SUCCESS";
 
     }
 
     public int getCancelBookings(Integer flightId) {
-//        if(flightCancelMap.containsKey(flightId)){
-//            return flightCancelMap.get(flightId);
-//          //  return 1;
-//        }
-
-        if(flightCancelList.contains(flightId)) return 1;
+        if(flightCancelMap.containsKey(flightId)){
+            return flightCancelMap.get(flightId);
+          //  return 1;
+        }
         else return  0;
-
-
-
     }
 }

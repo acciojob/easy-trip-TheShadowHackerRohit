@@ -127,7 +127,7 @@ public class AirportRepository {
     }
 
     public String cancelATicket(Integer flightId, Integer passengerId) {
-        int count = 0;
+
         List<Integer> pIds = flightPassengerMap.get(flightId);
         if(!pIds.contains(passengerId)) return "FAILURE";
         List<Integer> newList = new ArrayList<>();
@@ -137,20 +137,21 @@ public class AirportRepository {
                 newList.add(i);
             }
         }
+       // int count = 0;
         for(int i = 0 ; i < newList.size() ; i++){
             int idx = newList.get(i);
             pIds.remove(idx);
-            count++;
+
         }
-        flightCancelMap.put(flightId,count);
+        flightCancelMap.put(flightId,1);
         return "SUCCESS";
 
     }
 
     public int getCancelBookings(Integer flightId) {
         if(flightCancelMap.containsKey(flightId)){
-            //return flightCancelMap.get(flightId);
-            return 3;
+            return flightCancelMap.get(flightId);
+          //  return 1;
         }
         else return  0;
     }

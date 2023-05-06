@@ -6,6 +6,7 @@ import com.driver.model.Flight;
 import com.driver.model.Passenger;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -171,11 +172,18 @@ public class AirportService {
         //This includes both the people who have come for a flight and who have landed on an airport after their flight
         Airport airport = airportRepository.getAirportByName(airportName);
         City city = airport.getCity();
+
+        String givenDateString = new SimpleDateFormat("yyyy-MM-dd").format(date);
+
         List<Flight> flightList = airportRepository.getAllFlight();
-        if(flightList.size()==0) return 0;//NumberOfPeopleOnWithNoFlight
+        if(flightList.size() == 0) return 0;//NumberOfPeopleOnWithNoFlight
+
         List<Flight> flights = new ArrayList<>();
+
         for (Flight flight : flightList){
-            if((flight.getFlightDate().equals(date) && (flight.getFromCity().equals(city)||flight.getToCity().equals(city)))){
+            String flightDate = new SimpleDateFormat("yyyy-MM-dd").format(date);
+//            flight.getFlightDate().equals(date)
+            if(( (givenDateString.equals(flightDate) )&& (flight.getFromCity().equals(city)||flight.getToCity().equals(city)))){
                 flights.add(flight);
             }
         }

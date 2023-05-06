@@ -106,13 +106,13 @@ public class AirportController {
         return airportService.countOfBookingsDoneByPassengerAllCombined(passengerId);
     }
 
-    @GetMapping("/get-number-of-people-on-airport-on/{date}")
-    public int getNumberOfPeopleOn(@PathVariable("date") Date date,@RequestParam("airportName")String airportName){
+    @GetMapping("/get-number-of-people-on-airport-on")///{date}
+    public int getNumberOfPeopleOn(@RequestParam("date") Date date,@RequestParam("airportName")String airportName){
 
         //Calculate the total number of people who have flights on that day on a particular airport
         //This includes both the people who have come for a flight and who have landed on an airport after their flight
-
-        return airportService.getNumberOfPeopleOn(date,airportName);
+        return 0;
+       // return airportService.getNumberOfPeopleOn(date,airportName);
     }
 
 

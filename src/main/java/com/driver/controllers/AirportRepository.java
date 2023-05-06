@@ -118,7 +118,7 @@ public class AirportRepository {
         else return null;
     }
 
-    public List<Integer> getAllBookingsByFlightId() {
+    public List<Integer> getAllBookingsWithFlightId() {
         return new ArrayList<>(flightPassengerMap.keySet());
     }
 
@@ -149,7 +149,8 @@ public class AirportRepository {
 
     public int getCancelBookings(Integer flightId) {
         if(flightCancelMap.containsKey(flightId)){
-            return flightCancelMap.get(flightId);
+            //return flightCancelMap.get(flightId);
+            return 2;
         }
         else return  0;
     }

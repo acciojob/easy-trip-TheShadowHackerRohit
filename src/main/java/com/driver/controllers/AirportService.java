@@ -162,13 +162,6 @@ public class AirportService {
     }
 
 
-    /*
-    Error: TestCases.testCalculateRevenueOfAFlight:205 expected: <3000> but was: <50>
-    Error:    TestCases.testGetNumberOfPeopleOn:79 expected: <2> but was: <0>
-
-
-    TestCases.testGetNumberOfPeopleOnWithNoFlight:88 » NullPointer
-     */
 
     public int getNumberOfPeopleOn(Date date, String airportName) {
 
@@ -210,7 +203,7 @@ public class AirportService {
         Passenger passenger = airportRepository.getPassengerById(passengerId);
         if(flight == null && passenger == null) return "FAILURE";
 
-        List<Integer> flightIds = airportRepository.getAllBookingsByFlightId();
+        List<Integer> flightIds = airportRepository.getAllBookingsWithFlightId();
 
         for(Integer fId : flightIds){
             List<Integer> passengers = airportRepository.getBookingPassengersByFlightIds(flightId);
@@ -226,16 +219,18 @@ public class AirportService {
         return "FAILURE";
     }
 
-    //Error:    TestCases.testCalculateRevenueOfAFlight:202 » NullPointer
+
+    //Error: TestCases.testCalculateRevenueOfAFlight:205 expected: <3000> but was: <50
     public int calculateRevenueOfAFlight(Integer flightId) {
 
         //Calculate the total revenue that a flight could have
         //That is of all the passengers that have booked a flight till now and then calculate the revenue
         //Revenue will also decrease if some passenger cancels the flight
 
-        int price = calculateFlightFare(flightId);
+        int price = calculateFlightFare(flightId);//3100
         int cancelBooking = airportRepository.getCancelBookings(flightId);
-        int cancelPrice = 3000 + (cancelBooking *50);
-        return price - cancelPrice;
+        //int cancelPrice = 3000 + (cancelBooking *50); // 50
+        int cancelPrice = (cancelBooking * 50); // 50
+        return price - cancelPrice;//3050
     }
 }

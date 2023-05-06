@@ -77,13 +77,15 @@ public class AirportRepository {
             }
             passengerList.add(passengerId);
             flightPassengerMap.put(flightId,passengerList);
-            return "SUCCESS";
-        }else{
+//            return "SUCCESS";
+        }
+        else{
             List<Integer> newPassengerList = new ArrayList<>();
             newPassengerList.add(passengerId);
             flightPassengerMap.put(flightId,newPassengerList);
-            return "SUCCESS";
+            //return "SUCCESS";
         }
+        return "SUCCESS";
     }
 
 

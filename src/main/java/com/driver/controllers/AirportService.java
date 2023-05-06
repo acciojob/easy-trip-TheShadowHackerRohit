@@ -119,6 +119,10 @@ public class AirportService {
 
     }
 
+    /*
+    Error:    TestCases.testBookAFlight:114 » NullPointer
+    Error:    TestCases.testBookAFlightWhenPassengerAlreadyThere:128 » NullPointer
+     */
     public String bookATicket(Integer flightId, Integer passengerId) {
 
         //If the numberOfPassengers who have booked the flight is greater than : maxCapacity, in that case :
@@ -128,7 +132,7 @@ public class AirportService {
 
         Flight flight = airportRepository.getFlightById(flightId);
         Passenger passenger = airportRepository.getPassengerById(passengerId);
-        if(flight == null && passenger == null) return " flight or passenger does not exist";
+        if(flight == null || passenger == null) return "flight or passenger does not exist";
 
         int numberOfPassengersBookedFlight = airportRepository.numberOfTicketForFlight(flightId);
 
@@ -139,6 +143,7 @@ public class AirportService {
         return  airportRepository.bookATicket(flightId,passengerId);
     }
 
+    //Error:    TestCases.testCalculateFlightFare:100 » NullPointer
     public int calculateFlightFare(Integer flightId) {
 
         //Calculation of flight prices is a function of number of people who have booked the flight already.
@@ -152,11 +157,18 @@ public class AirportService {
 
     }
 
+    //Error:    TestCases.testCountOfBookingsDoneByPassengerAllCombined:222 » NullPointer
     public int countOfBookingsDoneByPassengerAllCombined(Integer passengerId) {
         //Tell the count of flight bookings done by a passenger: This will tell the total count of flight bookings done by a passenger
         return airportRepository.countOfBookingsDoneByPassengerAllCombined(passengerId);
     }
 
+
+    /*
+    Error:    TestCases.testGetNumberOfPeopleOn:76 » NullPointer
+    Error:    TestCases.testGetNumberOfPeopleOnWithNoFlight:88 » NullPointer
+
+     */
     public int getNumberOfPeopleOn(Date date, String airportName) {
 
         //Calculate the total number of people who have flights on that day on a particular airport
@@ -177,6 +189,10 @@ public class AirportService {
         return count;
     }
 
+    /*
+    Error:    TestCases.testCancelATicket:143 » NullPointer
+    Error:    TestCases.testCancelATicketWhenTicketDoesntExist:158 » NullPointer
+     */
     public String cancelATicket(Integer flightId, Integer passengerId) {
         //If the passenger has not booked a ticket for that flight or the flightId is invalid or in any other failure case
         // then return a "FAILURE" message
@@ -203,6 +219,7 @@ public class AirportService {
         return "FAILURE";
     }
 
+    //Error:    TestCases.testCalculateRevenueOfAFlight:202 » NullPointer
     public int calculateRevenueOfAFlight(Integer flightId) {
 
         //Calculate the total revenue that a flight could have

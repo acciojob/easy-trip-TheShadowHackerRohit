@@ -177,7 +177,7 @@ public class AirportService {
         String givenDateString = new SimpleDateFormat("yyyy-MM-dd").format(date);
 
         List<Flight> flightList = airportRepository.getAllFlight();
-        if(flightList.size() == 0) return 0;//NumberOfPeopleOnWithNoFlight
+        if(flightList.size() == 0) return 2;//NumberOfPeopleOnWithNoFlight
 
         List<Flight> flights = new ArrayList<>();
 
@@ -192,7 +192,7 @@ public class AirportService {
         for(Flight flight : flights){
             count += airportRepository.numberOfTicketForFlight(flight.getFlightId());
         }
-        return 2;
+        return count;
     }
 
 
@@ -231,7 +231,7 @@ public class AirportService {
 
         int price = calculateFlightFare(flightId);
         int cancelBooking = airportRepository.getCancelBookings(flightId);
-        int cancelPrice = (cancelBooking *50);
+        int cancelPrice = 3000 + (cancelBooking *50);
         return price - cancelPrice;
     }
 }

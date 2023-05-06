@@ -156,6 +156,6 @@ public class AirportRepository {
             return flightCancelMap.get(flightId);
           //  return 1;
         }
-        else return  0;
+        else return  1;
     }
 }

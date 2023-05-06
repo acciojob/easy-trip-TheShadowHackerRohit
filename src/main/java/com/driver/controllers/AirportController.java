@@ -136,9 +136,6 @@ public class AirportController {
         //That is of all the passengers that have booked a flight till now and then calculate the revenue
         //Revenue will also decrease if some passenger cancels the flight
 
-
-       // return 3000;
-
         return airportService.calculateRevenueOfAFlight(flightId);
     }
 

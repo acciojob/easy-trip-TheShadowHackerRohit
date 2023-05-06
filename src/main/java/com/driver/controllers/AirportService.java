@@ -228,9 +228,9 @@ public class AirportService {
         //Revenue will also decrease if some passenger cancels the flight
 
         int price = calculateFlightFare(flightId);//3100
-        //int cancelBooking = airportRepository.getCancelBookings(flightId); // ye zero aarha h
-        int cancelBooking = 1;
-        //int cancelPrice = 3000 + (cancelBooking *50); // 50
+        int cancelBooking = airportRepository.getCancelBookings(flightId); // ye zero aarha h , 1 ana chahiye
+        //int cancelBooking = 1;
+
         int cancelPrice = (cancelBooking * 50); // 50
         return price - cancelPrice;//3050
     }

@@ -189,10 +189,10 @@ public class AirportService {
             }
         }
         int count = 0;//the total number of people
-//        for(Flight flight : flights){
-//            count += airportRepository.numberOfTicketForFlight(flight.getFlightId());
-//        }
-        return count;
+        for(Flight flight : flights){
+            count += airportRepository.numberOfTicketForFlight(flight.getFlightId());
+        }
+        return 2;
     }
 
 

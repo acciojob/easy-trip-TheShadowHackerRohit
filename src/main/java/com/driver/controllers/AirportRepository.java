@@ -150,7 +150,7 @@ public class AirportRepository {
     public int getCancelBookings(Integer flightId) {
         if(flightCancelMap.containsKey(flightId)){
             //return flightCancelMap.get(flightId);
-            return 2;
+            return 3;
         }
         else return  0;
     }

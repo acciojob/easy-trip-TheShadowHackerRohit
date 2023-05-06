@@ -80,7 +80,6 @@ public class AirportRepository {
             }
             passengerList.add(passengerId);
             flightPassengerMap.put(flightId,passengerList);
-//            return "SUCCESS";
         }
         else{
             List<Integer> newPassengerList = new ArrayList<>();
@@ -139,7 +138,6 @@ public class AirportRepository {
                 newList.add(i);
             }
         }
-       // int count = 0;
         for(int i = 0 ; i < newList.size() ; i++){
             int idx = newList.get(i);
             pIds.remove(idx);

@@ -171,6 +171,7 @@ public class AirportService {
         if(airport == null) return 0;
         City city = airport.getCity();
 
+        //this was the best thing what I learnt today====================================
         String givenDateString = new SimpleDateFormat("yyyy-MM-dd").format(date);
 
         List<Flight> flightList = airportRepository.getAllFlight();
@@ -179,8 +180,10 @@ public class AirportService {
         List<Flight> flights = new ArrayList<>();
 
         for (Flight flight : flightList){
+
+            // this was the best thing what I learnt today====================================
             String flightDate = new SimpleDateFormat("yyyy-MM-dd").format(date);
-//            flight.getFlightDate().equals(date)
+
             if(( (givenDateString.equals(flightDate) )&& (flight.getFromCity().equals(city)||flight.getToCity().equals(city)))){
                 flights.add(flight);
             }
@@ -227,11 +230,10 @@ public class AirportService {
         //That is of all the passengers that have booked a flight till now and then calculate the revenue
         //Revenue will also decrease if some passenger cancels the flight
 
-        int price = calculateFlightFare(flightId);//3100
-        int cancelBooking = airportRepository.getCancelBookings(flightId); // ye zero aarha h , 1 ana chahiye
-        //int cancelBooking = 1;
+        int price = calculateFlightFare(flightId);
+        int cancelBooking = airportRepository.getCancelBookings(flightId); // flight id se number of cancel booking correct nhi pta rha
 
-        int cancelPrice = (cancelBooking * 50); // 50
-        return price - cancelPrice;//3050
+        int cancelPrice = (cancelBooking * 50);
+        return price - cancelPrice;
     }
 }

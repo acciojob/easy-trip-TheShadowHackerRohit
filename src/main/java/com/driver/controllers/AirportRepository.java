@@ -90,7 +90,10 @@ public class AirportRepository {
 
 
     public int numberOfTicketForFlight(Integer flightId) {
-        return flightPassengerMap.get(flightId).size();
+        if(flightPassengerMap.containsKey(flightId)){
+            return flightPassengerMap.get(flightId).size();
+        }
+        else return  0;
     }
 
     public int countOfBookingsDoneByPassengerAllCombined(Integer passengerId) {

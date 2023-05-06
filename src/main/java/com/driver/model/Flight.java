@@ -16,7 +16,10 @@ public class Flight {
 
     private double duration;
 
+
+
     public Flight() {
+
 
     }
 

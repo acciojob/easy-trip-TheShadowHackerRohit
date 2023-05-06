@@ -12,6 +12,7 @@ public class Passenger {
 
     public Passenger() {
 
+
     }
 
     public Passenger(int passengerId, String email, String name, int age) {

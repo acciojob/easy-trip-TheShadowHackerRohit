@@ -177,7 +177,7 @@ public class AirportService {
         String givenDateString = new SimpleDateFormat("yyyy-MM-dd").format(date);
 
         List<Flight> flightList = airportRepository.getAllFlight();
-        if(flightList.size() == 0) return 2;//NumberOfPeopleOnWithNoFlight
+        if(flightList.size() == 0) return 0;//NumberOfPeopleOnWithNoFlight
 
         List<Flight> flights = new ArrayList<>();
 

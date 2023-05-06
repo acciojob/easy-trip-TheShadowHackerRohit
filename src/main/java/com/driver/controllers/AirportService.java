@@ -231,7 +231,7 @@ public class AirportService {
 
         int price = calculateFlightFare(flightId);
         int cancelBooking = airportRepository.getCancelBookings(flightId);
-        int cancelPrice = 3000 + (cancelBooking *50);
+        int cancelPrice = (cancelBooking *50);
         return price - cancelPrice;
     }
 }

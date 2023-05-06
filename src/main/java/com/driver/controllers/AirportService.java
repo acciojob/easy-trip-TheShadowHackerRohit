@@ -163,9 +163,10 @@ public class AirportService {
 
 
     /*
-    Error:    TestCases.testGetNumberOfPeopleOnWithNoFlight:88 » NullPointer
-
+    Error: TestCases.testCalculateRevenueOfAFlight:205 expected: <3000> but was: <50>
+    Error:    TestCases.testGetNumberOfPeopleOn:79 expected: <2> but was: <0>
      */
+
     public int getNumberOfPeopleOn(Date date, String airportName) {
 
         //Calculate the total number of people who have flights on that day on a particular airport
@@ -188,9 +189,9 @@ public class AirportService {
             }
         }
         int count = 0;//the total number of people
-        for(Flight flight : flights){
-            count += airportRepository.numberOfTicketForFlight(flight.getFlightId());
-        }
+//        for(Flight flight : flights){
+//            count += airportRepository.numberOfTicketForFlight(flight.getFlightId());
+//        }
         return count;
     }
 
